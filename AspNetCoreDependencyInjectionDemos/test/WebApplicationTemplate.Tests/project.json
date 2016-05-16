@@ -6,6 +6,7 @@
 		"emitEntryPoint": true
 	},
 	"dependencies": {
+		"Moq": "4.2.1510.2205",
 		"MSTest.Runner.Dnx": "1.0.0-rc1",
 		"MSTest.UnitTestFramework": "1.0.0-alpha7",
 		"WebApplicationTemplate": "1.0.0-*"
