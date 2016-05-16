@@ -10,7 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using WebApplicationTemplate.Models;
+using WebApplicationTemplate.Repositories.Sales;
 using WebApplicationTemplate.Services;
+using WebApplicationTemplate.Services.Sales;
 
 namespace WebApplicationTemplate
 {
@@ -53,10 +55,22 @@ namespace WebApplicationTemplate
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
-        }
+	        services.AddTransient<IPriceResolver, PriceResolver>();
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+			// repositories
+	        services.AddTransient<IBasicPriceRepository, BasicPriceRepository>();
+			services.AddTransient<ICustomerRepository, CustomerRepository>();
+			services.AddTransient<ICustomerPriceRepository, CustomerPriceRepository>();
+			services.AddTransient<ICustomerProductGroupDiscountRepository, CustomerProductGroupDiscountRepository>();
+			services.AddTransient<IProductRepository, ProductRepository>();
+
+			// UI services
+			services.AddTransient<ICustomerSelectOptions, CustomerSelectOptions>();
+			services.AddTransient<IProductSelectOptions, ProductSelectOptions>();
+		}
+
+		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -77,14 +91,21 @@ namespace WebApplicationTemplate
                     using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
                         .CreateScope())
                     {
-                        serviceScope.ServiceProvider.GetService<ApplicationDbContext>()
-                             .Database.Migrate();
+                        var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+                        context.Database.Migrate();
                     }
                 }
                 catch { }
             }
 
-            app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
+			// Initial data seed
+			using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+			{
+				var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+				context.EnsureSeedData();
+			}
+
+			app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
 
             app.UseStaticFiles();
 
