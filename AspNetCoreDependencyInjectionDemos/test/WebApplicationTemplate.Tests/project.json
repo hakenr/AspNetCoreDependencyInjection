@@ -1,0 +1,17 @@
+{
+	"commands": {
+		"test": "MSTest.Runner.Dnx"
+	},
+	"compilationOptions": {
+		"emitEntryPoint": true
+	},
+	"dependencies": {
+		"MSTest.Runner.Dnx": "1.0.0-rc1",
+		"MSTest.UnitTestFramework": "1.0.0-alpha7",
+		"WebApplicationTemplate": "1.0.0-*"
+	},
+	"frameworks": {
+		"dnx451": { }
+	},
+	"version": "1.0.0-*"
+}
