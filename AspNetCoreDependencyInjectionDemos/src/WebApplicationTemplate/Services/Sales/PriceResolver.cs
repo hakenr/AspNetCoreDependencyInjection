@@ -35,11 +35,7 @@ namespace WebApplicationTemplate.Services.Sales
 
 			if (priceBeforeDiscount != null)
 			{
-				decimal? customerProductGroupDiscount = null;
-				if (product.ProductGroup != null)
-				{
-					customerProductGroupDiscount = customerProductGroupDiscountRepository.GetDiscountForCustomerAndProductGroup(customer, product.ProductGroup);
-				}
+				var customerProductGroupDiscount = customerProductGroupDiscountRepository.GetDiscountForCustomerAndProductGroup(customer, product.ProductGroup);
 
 				if (customerProductGroupDiscount != null)
 				{

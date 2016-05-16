@@ -21,8 +21,8 @@ namespace WebApplicationTemplate.Models
 				context.ProductGroups.Add(productGroupConsulting);
 				context.SaveChanges();
 
-				var productSw1 = new Product() { ProductNumber = "SW1", ProductGroup = productGroupSoftware };
-				var productCn1 = new Product() { ProductNumber = "CN1", ProductGroup = productGroupConsulting };
+				var productSw1 = new Product() { ProductNumber = "Microsoft Azure", ProductGroup = productGroupSoftware };
+				var productCn1 = new Product() { ProductNumber = "Rada nad zlato", ProductGroup = productGroupConsulting };
 				context.Products.Add(productSw1);
 				context.Products.Add(productCn1);
 				context.SaveChanges();

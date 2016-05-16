@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Data.Entity;
 using WebApplicationTemplate.Models;
 using WebApplicationTemplate.Models.Sales;
 
@@ -22,7 +23,9 @@ namespace WebApplicationTemplate.Repositories.Sales
 
 		public Product GetObject(int productId)
 		{
-			return applicationDbContext.Products.SingleOrDefault(p => p.ProductId == productId);
+			return applicationDbContext.Products
+				.Include(p => p.ProductGroup)
+				.SingleOrDefault(p => p.ProductId == productId);
 		}
 	}
 }
