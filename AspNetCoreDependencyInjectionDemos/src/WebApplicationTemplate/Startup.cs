@@ -53,10 +53,17 @@ namespace WebApplicationTemplate
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+			// LifeStyles demo
+	        services.AddTransient<IMyServiceTransient, MyService>();
+			services.AddScoped<IMyServiceScoped, MyService>();
+			services.AddSingleton<IMyServiceSingleton, MyService>();
+			services.AddInstance<IMyServiceInstance>(new MyService(Guid.Empty));
+	        services.AddTransient<MyDerivedService, MyDerivedService>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();

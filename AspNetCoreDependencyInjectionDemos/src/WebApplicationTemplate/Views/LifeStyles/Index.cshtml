@@ -1,0 +1,47 @@
+﻿@{
+	ViewBag.Title = "LifeStyles";
+	Layout = "_Layout";
+}
+
+<h2>Service LifeStyles</h2>
+
+<h3>IMyServiceXy - direct injection</h3>
+<div class="form-horizontal">
+	<div class="form-group">
+		<label class="col-md-2 control-label">Transient</label>
+		<div class="col-md-10"><span class="form-control">@ViewBag.MyServiceTransientId</span></div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-2 control-label">Scoped</label>
+		<div class="col-md-10"><span class="form-control">@ViewBag.MyServiceScopedId</span></div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-2 control-label">Singleton</label>
+		<div class="col-md-10"><span class="form-control">@ViewBag.MyServiceSingletonId</span></div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-2 control-label">Instace</label>
+		<div class="col-md-10"><span class="form-control">@ViewBag.MyServiceInstanceId</span></div>
+	</div>
+</div>
+<br/>
+<h3>IMyDerivedService.Xy - another injection (same services requested)</h3>
+<div class="form-horizontal">
+	<div class="form-group">
+		<label class="col-md-2 control-label">Transient</label>
+		<div class="col-md-10"><span class="form-control">@ViewBag.MyDerivedServiceTransientId</span></div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-2 control-label">Scoped</label>
+		<div class="col-md-10"><span class="form-control">@ViewBag.MyDerivedServiceScopedId</span></div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-2 control-label">Singleton</label>
+		<div class="col-md-10"><span class="form-control">@ViewBag.MyDerivedServiceSingletonId</span></div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-2 control-label">Instace</label>
+		<div class="col-md-10"><span class="form-control">@ViewBag.MyDerivedServiceInstanceId</span></div>
+	</div>
+</div>
+
