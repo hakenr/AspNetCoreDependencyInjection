@@ -16,8 +16,7 @@ namespace WebApplicationTemplate.Services.Sales
 		public PriceResolver(
 			IBasicPriceRepository basicPriceRepository,
 			ICustomerProductGroupDiscountRepository customerProductGroupDiscountRepository,
-			ICustomerPriceRepository customerPriceRepository
-			)
+			ICustomerPriceRepository customerPriceRepository)
 		{
 			this.basicPriceRepository = basicPriceRepository;
 			this.customerProductGroupDiscountRepository = customerProductGroupDiscountRepository;
