@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebApplicationTemplate.Repositories.Sales;
 using WebApplicationTemplate.Services.Sales;
 using WebApplicationTemplate.ViewModels.Pricing;

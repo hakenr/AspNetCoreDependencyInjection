@@ -10,9 +10,9 @@ namespace WebApplicationTemplate.Models
 			if (!context.Customers.Any())
 			{
 				var customerHavit = new Customer() { Name = "HAVIT" };
-				var customerGopas = new Customer() { Name = "Gopas" };
+				var customerMoonFish = new Customer() { Name = "MoonFish" };
 				context.Customers.Add(customerHavit);
-				context.Customers.Add(customerGopas);
+				context.Customers.Add(customerMoonFish);
 				context.SaveChanges();
 
 				var productGroupSoftware = new ProductGroup() { Name = "Software"};
