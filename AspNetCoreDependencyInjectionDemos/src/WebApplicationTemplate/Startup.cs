@@ -57,8 +57,8 @@ namespace WebApplicationTemplate
 	        services.AddTransient<IMyServiceTransient, MyService>();
 			services.AddScoped<IMyServiceScoped, MyService>();
 			services.AddSingleton<IMyServiceSingleton, MyService>();
-			services.AddInstance<IMyServiceInstance>(new MyService(Guid.Empty));
-	        services.AddTransient<MyDerivedService, MyDerivedService>();
+			services.AddSingleton<IMyServiceInstance>(new MyService(Guid.Empty)); // used to be AddInstance<IMyServiceInstance>(..) in RC bits
+			services.AddTransient<MyDerivedService, MyDerivedService>();
         }
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
