@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using WebApplicationTemplate.Models;
 using WebApplicationTemplate.Models.Sales;
 
